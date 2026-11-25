@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal portfolio of a software developer.">
+  <title>Darnel Walker | Full-Stack Developer</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --surface: #121a2d;
+      --surface-light: #19243b;
+      --text: #edf2ff;
+      --muted: #aab6cc;
+      --accent: #72e0c2;
+      --accent-2: #8da8ff;
+      --border: rgba(255,255,255,.10);
+      --max-width: 1080px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 85% 8%, rgba(141,168,255,.14), transparent 28rem),
+        radial-gradient(circle at 5% 30%, rgba(114,224,194,.10), transparent 24rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--accent); }
+    .container { width: min(var(--max-width), calc(100% - 40px)); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(11,16,32,.82);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(14px);
+    }
+    nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .logo { font-size: 1.15rem; font-weight: 800; letter-spacing: -.04em; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 22px; color: var(--muted); font-size: .93rem; }
+    .hero { display: grid; grid-template-columns: 1.35fr .8fr; align-items: center; gap: 64px; padding: 92px 0 84px; }
+    .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .16em; font-size: .76rem; font-weight: 800; }
+    h1 { margin: 12px 0 18px; font-size: clamp(2.7rem, 6vw, 5rem); line-height: 1.04; letter-spacing: -.065em; }
+    h1 span { color: var(--accent); }
+    .intro { max-width: 650px; color: var(--muted); font-size: 1.1rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; padding: 12px 19px; border-radius: 999px; font-weight: 750; border: 1px solid var(--border); transition: transform .2s, background .2s; }
+    .button:hover { transform: translateY(-2px); }
+    .button.primary { color: #07131a; background: var(--accent); border-color: var(--accent); }
+    .button.secondary { background: rgba(255,255,255,.04); }
+    .profile-card { padding: 18px; border: 1px solid var(--border); border-radius: 28px; background: linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.025)); box-shadow: 0 24px 80px rgba(0,0,0,.28); }
+    .profile-card img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 19px; background: var(--surface-light); }
+    .profile-caption { padding: 16px 4px 3px; color: var(--muted); font-size: .9rem; }
+    section { padding: 66px 0; }
+    .section-heading { margin-bottom: 28px; }
+    .section-heading h2 { margin: 5px 0 0; font-size: clamp(1.9rem, 4vw, 2.7rem); letter-spacing: -.045em; }
+    .section-heading p { margin: 8px 0 0; color: var(--muted); }
+    .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; }
+    .panel { background: rgba(18,26,45,.82); border: 1px solid var(--border); border-radius: 22px; padding: 26px; }
+    .panel p { color: var(--muted); margin-top: 0; }
+    .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .fact { background: var(--surface-light); border-radius: 15px; padding: 16px; }
+    .fact strong { display: block; font-size: 1.3rem; color: var(--accent); }
+    .fact span { color: var(--muted); font-size: .85rem; }
+    .skills { display: flex; flex-wrap: wrap; gap: 11px; }
+    .skill { padding: 9px 14px; border-radius: 999px; background: var(--surface-light); border: 1px solid var(--border); color: #dce5f7; font-size: .92rem; }
+    .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .project { overflow: hidden; padding: 0; }
+    .project-top { height: 145px; display: grid; place-items: center; background: linear-gradient(135deg, rgba(114,224,194,.2), rgba(141,168,255,.2)); color: var(--accent); font-size: 2.5rem; font-weight: 900; }
+    .project-body { padding: 22px; }
+    .project h3 { margin: 0 0 8px; }
+    .project p { color: var(--muted); font-size: .93rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 16px; }
+    .tags span { color: var(--accent); font-size: .78rem; background: rgba(114,224,194,.08); padding: 4px 9px; border-radius: 99px; }
+    .contact { display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+    .contact p { color: var(--muted); max-width: 600px; }
+    footer { border-top: 1px solid var(--border); padding: 25px 0; color: var(--muted); font-size: .88rem; }
+    footer .container { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    @media (max-width: 760px) {
+      .hero, .about-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero { padding-top: 62px; }
+      .profile-card { max-width: 420px; }
+      .projects { grid-template-columns: 1fr; }
+      .contact { align-items: flex-start; flex-direction: column; }
+      nav { align-items: flex-start; flex-direction: column; justify-content: center; padding: 15px 0; gap: 10px; }
+      .nav-links { gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container" aria-label="Main navigation">
+      <a class="logo" href="#home">My&nbsp;<span>Portfolio</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container hero" id="home">
+      <div>
+        <div class="eyebrow">Software Engineer · Portfolio</div>
+        <h1>Hello, I'm <span>Darnel Walker.</span></h1>
+        <p class="intro">
+          I build modern, reliable web applications and enjoyable digital experiences.
+          I enjoy turning complex problems into clean, practical solutions.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="#projects">Explore my work</a>
+          <a class="button secondary" href="#contact">Contact me</a>
+        </div>
+      </div>
+      <aside class="profile-card">
+        <img src="https://placehold.co/700x875/19243b/edf2ff?text=Your+Photo" alt="Placeholder portrait for your profile">
+        <div class="profile-caption">Replace this image with your professional profile photo.</div>
+      </aside>
+    </section>
+
+    <section class="container" id="about">
+      <div class="section-heading">
+        <div class="eyebrow">A little about me</div>
+        <h2>About me</h2>
+      </div>
+      <div class="about-grid">
+        <div class="panel">
+          <p>
+            I'm a software developer focused on building useful, user-friendly web
+            applications. My work includes frontend interfaces, backend services,
+            and connecting the two into complete products.
+          </p>
+          <p>
+            I value readable code, thoughtful design, continuous learning, and
+            collaboration. I'm always interested in solving meaningful problems
+            with technology.
+          </p>
+        </div>
+        <div class="facts">
+          <div class="fact"><strong>8+</strong><span>Years of experience</span></div>
+          <div class="fact"><strong>Web</strong><span>Application development</span></div>
+          <div class="fact"><strong>React</strong><span>Frontend development</span></div>
+          <div class="fact"><strong>Node.js</strong><span>Backend development</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="skills">
+      <div class="section-heading">
+        <div class="eyebrow">What I work with</div>
+        <h2>Technical skills</h2>
+        <p>Update this list to reflect the technologies you use confidently.</p>
+      </div>
+      <div class="skills">
+        <span class="skill">JavaScript</span><span class="skill">HTML5</span>
+        <span class="skill">CSS3</span><span class="skill">React.js</span>
+        <span class="skill">Node.js</span><span class="skill">REST APIs</span>
+        <span class="skill">Git</span><span class="skill">GitHub</span>
+        <span class="skill">SQL</span><span class="skill">Responsive Design</span>
+      </div>
+    </section>
+
+    <section class="container" id="projects">
+      <div class="section-heading">
+        <div class="eyebrow">Selected work</div>
+        <h2>Featured projects</h2>
+        <p>Replace these examples with real projects and links to your work.</p>
+      </div>
+      <div class="projects">
+        <article class="panel project">
+          <div class="project-top" aria-hidden="true">01</div>
+          <div class="project-body">
+            <h3>E-commerce Platform</h3>
+            <p>A sample online store experience with product browsing, cart management, and checkout workflows.</p>
+            <div class="tags"><span>React</span><span>Node.js</span><span>REST API</span></div>
+          </div>
+        </article>
+        <article class="panel project">
+          <div class="project-top" aria-hidden="true">02</div>
+          <div class="project-body">
+            <h3>Admin Dashboard</h3>
+            <p>A sample dashboard for viewing business metrics, managing records, and monitoring activity.</p>
+            <div class="tags"><span>JavaScript</span><span>CSS</span><span>Charts</span></div>
+          </div>
+        </article>
+        <article class="panel project">
+          <div class="project-top" aria-hidden="true">03</div>
+          <div class="project-body">
+            <h3>API Service</h3>
+            <p>A sample backend service with organized endpoints, validation, and structured responses.</p>
+            <div class="tags"><span>Node.js</span><span>Express</span><span>Database</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" id="contact">
+      <div class="panel contact">
+        <div>
+          <div class="eyebrow">Let's connect</div>
+          <h2>Have a project in mind?</h2>
+          <p>I'm open to discussing software engineering opportunities, interesting projects, and professional connections.</p>
+        </div>
+        <a class="button primary" href="mailto:your.email@example.com">Email me</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span>© <span id="year">2026</span> Darnel Walker. All rights reserved.</span>
+      <span>Designed with HTML5 and CSS3.</span>
+    </div>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
